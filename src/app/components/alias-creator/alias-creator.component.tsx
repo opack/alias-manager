@@ -1,19 +1,41 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, createRef } from 'react';
+import AliasCreatorProps from './alias-creator.props';
+import aliasCreatorDefaultProps from './alias-creator.default-props';
 
-class AliasCreator extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    const { createAlias } = this.props;
-    return <div />;
-  }
+interface AliasCreatorState {
+  // The current name of the alias to create
+  alias: string;
 }
 
-AliasCreator.propTypes = {
-  createAlias: PropTypes.func,
-};
+class AliasCreator extends Component<AliasCreatorProps, AliasCreatorState> {
+  static defaultProps = aliasCreatorDefaultProps;
+
+  public state: AliasCreatorState = {
+    alias: ''
+  };
+
+  private input = createRef<HTMLInputElement>();
+
+  createAlias() {
+    const node = this.input.current;
+    if (node) {
+      this.props.createAlias(node.value);
+    }
+  }
+  
+  render() {
+    const { createAlias } = this.props;
+    const { alias } = this.state;
+
+    return (
+      <div>
+        <fieldset>
+          <input ref={this.input} type="text" value={alias} />
+          <button onClick={this.createAlias} >Create</button>
+        </fieldset>
+      </div>
+    );
+  }
+}
 
 export default AliasCreator;

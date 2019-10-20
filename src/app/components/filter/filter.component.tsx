@@ -1,19 +1,43 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import filterDefaultProps from './filter.default-props';
+import FilterProps from './filter.props';
 
-class Filter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    const { filter } = this.props;
-    return <div />;
-  }
+interface FilterState {
+  // The current term to use for filtering
+  term: string;
 }
 
-Filter.propTypes = {
-  filter: PropTypes.func,
-};
+class Filter extends Component<FilterProps, FilterState> {
+  public state: FilterState = {
+    term: ''
+  };
+
+  static defaultProps = filterDefaultProps;
+
+  startFiltering(event: any) {
+    this.setState( (prevState: FilterState, props: FilterProps) => {
+      const newTerm = event.target.value;
+
+      // Filter on this new term
+      this.props.filter(newTerm);
+
+      // Update the state with the new term
+      return {
+        term: newTerm
+      }
+    });
+  }
+
+  render() {
+    const { term } = this.state;
+    return (
+      <div>
+        <fieldset>
+          <input type="text" value={term} onChange={this.startFiltering} />
+        </fieldset>
+      </div>
+    );
+  }
+}
 
 export default Filter;

@@ -1,17 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Filter from '../../components/filter/filter.component.jsx';
 import AliasCreator from '../../components/alias-creator/alias-creator.component.jsx';
 import AliasList from './AliasList.jsx.js.js';
 
-const Home = props => (
+const Home = () => (
   <div>
-    <Filter filter={filter} />
-    <AliasCreator createAlias={createAlias} />
+    <Filter />
     <AliasList />
+    <AliasCreator />
   </div>
 );
-
-Home.propTypes = {};
 
 export default Home;
