@@ -1,7 +1,8 @@
 import React from 'react';
-import Filter from '../../components/filter/filter.component.jsx';
-import AliasCreator from '../../components/alias-creator/alias-creator.component.jsx';
-import AliasList from './AliasList.jsx.js.js';
+
+import AliasCreator from '../../components/alias-creator/alias-creator.component';
+import AliasList from '../../components/alias-list/alias-list.component';
+import Filter from '../../components/filter/filter.component';
 
 const Home = () => (
   <div>
