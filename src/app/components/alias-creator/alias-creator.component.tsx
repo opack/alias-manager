@@ -16,7 +16,7 @@ class AliasCreator extends Component<AliasCreatorProps, AliasCreatorState> {
 
   private input = createRef<HTMLInputElement>();
 
-  createAlias() {
+  createAlias = () => {
     const node = this.input.current;
     if (node) {
       this.props.createAlias(node.value);
@@ -24,13 +24,12 @@ class AliasCreator extends Component<AliasCreatorProps, AliasCreatorState> {
   }
   
   render() {
-    const { createAlias } = this.props;
     const { alias } = this.state;
 
     return (
       <div>
         <fieldset>
-          <input ref={this.input} type="text" value={alias} />
+          <input ref={this.input} type="text" defaultValue={alias} />
           <button onClick={this.createAlias} >Create</button>
         </fieldset>
       </div>
