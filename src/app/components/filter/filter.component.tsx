@@ -14,10 +14,9 @@ class Filter extends Component<FilterProps, FilterState> {
 
   static defaultProps = filterDefaultProps;
 
-  startFiltering(event: any) {
+  startFiltering = (event: any) => {
+    const newTerm = event.target.value;
     this.setState( (prevState: FilterState, props: FilterProps) => {
-      const newTerm = event.target.value;
-
       // Filter on this new term
       this.props.filter(newTerm);
 
