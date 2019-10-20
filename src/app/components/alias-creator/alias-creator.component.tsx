@@ -19,7 +19,7 @@ class AliasCreator extends Component<AliasCreatorProps, AliasCreatorState> {
   createAlias = () => {
     const node = this.input.current;
     if (node) {
-      this.props.createAlias(node.value);
+      this.props.onCreateAliasClick(node.value);
     }
   }
   
