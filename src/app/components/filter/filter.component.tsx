@@ -9,7 +9,7 @@ interface FilterState {
 
 class Filter extends Component<FilterProps, FilterState> {
   public state: FilterState = {
-    term: ''
+    term: this.props.initialFilterTerm
   };
 
   static defaultProps = filterDefaultProps;

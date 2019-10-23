@@ -8,16 +8,21 @@ export interface AliasStore {
     filter: string
 }
 
+const initialState: AliasStore = {
+    aliases: ['fnac@valdera.fr', 'darty@valdera.fr', 'boulanger@valdera.fr', 'amazon@valdera.fr'],
+    filter: 'DBG INITIAL FILTER'
+}
+
 const aliasesSlice = createSlice({
     name: 'aliases',
-    initialState: [],
+    initialState,
     reducers: {
-        addAlias(state: string[], action: PayloadAction<string>) {
-            state.push(action.payload);
+        addAlias(state: AliasStore, action: PayloadAction<string>) {
+            state.aliases.push(action.payload);
             console.log('DBG', action.payload);
         },
-        removeAlias(state: string[], action: PayloadAction<string>) {
-            state = state.filter(alias => alias !== action.payload);
+        removeAlias(state: AliasStore, action: PayloadAction<string>) {
+            state.aliases = state.aliases.filter(alias => alias !== action.payload);
         }
     }
 })
