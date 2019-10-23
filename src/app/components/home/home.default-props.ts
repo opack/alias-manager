@@ -1,5 +1,5 @@
 const filterDefaultProps = {
-    initialFilterTerm: 'DBG',
+    initialFilterTerm: '',
     aliases: [],
     addAlias: (alias: string) => {}
 }

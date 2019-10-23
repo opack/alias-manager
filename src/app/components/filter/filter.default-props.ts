@@ -1,6 +1,6 @@
 const filterDefaultProps = {
-    initialFilterTerm: 'DBG',
-    filter: (term: string) => console.log(`Filtering on ${term}`)
+    initialFilterTerm: '',
+    filter: (term: string) => {}
 }
 
 export default filterDefaultProps;

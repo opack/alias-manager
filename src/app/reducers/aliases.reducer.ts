@@ -9,8 +9,8 @@ export interface AliasStore {
 }
 
 const initialState: AliasStore = {
-    aliases: ['fnac@valdera.fr', 'darty@valdera.fr', 'boulanger@valdera.fr', 'amazon@valdera.fr'],
-    filter: 'DBG INITIAL FILTER'
+    aliases: ['fnac@valdera.fr', 'darty@valdera.fr', 'boulanger@valdera.fr', 'amazon@valdera.fr', 'denver@dernier-dinosaure.com'],
+    filter: ''
 }
 
 const aliasesSlice = createSlice({
@@ -19,10 +19,12 @@ const aliasesSlice = createSlice({
     reducers: {
         addAlias(state: AliasStore, action: PayloadAction<string>) {
             state.aliases.push(action.payload);
-            console.log('DBG', action.payload);
         },
         removeAlias(state: AliasStore, action: PayloadAction<string>) {
             state.aliases = state.aliases.filter(alias => alias !== action.payload);
+        },
+        updateFilter(state: AliasStore, action: PayloadAction<string>) {
+            state.filter = action.payload;
         }
     }
 })
@@ -30,6 +32,6 @@ const aliasesSlice = createSlice({
 // Extract the action creators object and the reducer
 const { actions, reducer } = aliasesSlice;
 // Extract and export each action creator by name
-export const { addAlias, removeAlias } = actions;
+export const { addAlias, removeAlias, updateFilter } = actions;
 // Export the reducer, either as a default or named export
 export default reducer;
