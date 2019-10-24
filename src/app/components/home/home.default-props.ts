@@ -1,6 +1,7 @@
 const filterDefaultProps = {
     initialFilterTerm: '',
-    filter: (term: string) => {}
+    aliases: [],
+    addAlias: (alias: string) => {}
 }
 
 export default filterDefaultProps;

@@ -1,15 +1,30 @@
-import React from 'react';
+import { connect } from 'react-redux'
+import { addAlias, updateFilter } from '../../reducers/aliases.reducer';
+import { GlobalStore } from '../../reducers/store';
 
-import AliasCreator from '../../components/alias-creator/alias-creator.component';
-import AliasList from '../../components/alias-list/alias-list.component';
-import Filter from '../../components/filter/filter.component';
+import Home from '../../components/home/home.component';
 
-const Home = () => (
-  <div>
-    <Filter />
-    <AliasList />
-    <AliasCreator />
-  </div>
-);
+const getVisibleAliases = (aliases: string[], filter: string) => {
+  if (filter.trim() === '') {
+    return aliases;
+  }
+  return aliases.filter( (alias: string) => alias.startsWith(filter));
+}
 
-export default Home;
+const mapStateToProps = (state: GlobalStore) => {
+  const { filter, aliases } = state.aliases;
+  return {
+    initialFilterTerm: filter,
+    aliases: getVisibleAliases(aliases, filter)
+  }
+};
+
+const mapDispatchToProps = {
+  addAlias,
+  updateFilter
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

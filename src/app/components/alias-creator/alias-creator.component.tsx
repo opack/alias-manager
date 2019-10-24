@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+
 import AliasCreatorProps from './alias-creator.props';
 import aliasCreatorDefaultProps from './alias-creator.default-props';
 
@@ -19,7 +20,7 @@ class AliasCreator extends Component<AliasCreatorProps, AliasCreatorState> {
   createAlias = () => {
     const node = this.input.current;
     if (node) {
-      this.props.createAlias(node.value);
+      this.props.onCreateAliasClick(node.value);
     }
   }
   
