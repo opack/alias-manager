@@ -10,22 +10,17 @@ import AliasCreator from "../../components/alias-creator/alias-creator.component
 
 const Home = () => {
     const { filter, aliases } = useSelector((state: GlobalStore) => state.aliases);
-    const dispatch = useDispatch();
-    
-    const handleUpdateFilter = (term: string) => {
-        dispatch(updateFilter(term));
-    }
 
-    const handleAddAlias = (alias: string) => {
-        dispatch(addAlias(alias));
-    }
+    const dispatch = useDispatch();
+    const handleUpdateFilter = (term: string) => dispatch(updateFilter(term));
+    const handleAddAlias = (alias: string) => dispatch(addAlias(alias));
 
     const getVisibleAliases = (aliases: string[], filter: string) => {
-      if (filter.trim() === '') {
-          return aliases;
-      }
-      return aliases.filter((alias: string) => alias.startsWith(filter));
-  };
+        if (filter.trim() === '') {
+            return aliases;
+        }
+        return aliases.filter((alias: string) => alias.startsWith(filter));
+    };
 
     return (
         <div>
