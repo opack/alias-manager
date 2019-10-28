@@ -4,7 +4,8 @@ import rootReducer from './rootReducer'
 import { AliasStore } from './aliases.reducer';
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  devTools: true
 })
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
