@@ -1,0 +1,2 @@
+Application Key: 1EslNdW2fvBLdLg5
+Application Secret: kGISrWhJFj32mSUgnMnlsRGZVes1EXmB
