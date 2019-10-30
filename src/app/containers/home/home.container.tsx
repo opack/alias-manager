@@ -19,7 +19,7 @@ const Home = () => {
         if (filter.trim() === '') {
             return aliases;
         }
-        return aliases.filter((alias: string) => alias.startsWith(filter));
+        return aliases.filter((alias: string) => alias.includes(filter));
     };
 
     return (
