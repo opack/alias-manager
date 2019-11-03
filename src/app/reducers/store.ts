@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from 'redux-starter-kit'
 
 import rootReducer from './rootReducer'
 import { AliasStore } from './aliases.reducer';
-import aliasDataService from '../services/data.service';
+import aliasDataService from '../services/redirections-data.service';
 
 const store = configureStore({
   reducer: rootReducer,

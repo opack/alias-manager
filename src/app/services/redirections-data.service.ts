@@ -3,9 +3,6 @@ import { fetchAliases, populateAliases } from "../reducers/aliases.reducer";
 import { Dispatch, Action } from "redux";
 
 import credentials from './app-keys';
-
-credentials.consumerKey = '8dfHLBk2eixeTl0d8eyq6hyx8YI4X50V';
-
 const ovh = require('ovh')(credentials);
 
 const aliasDataService = (store: any) => (next: Dispatch) => (action: Action) => {
