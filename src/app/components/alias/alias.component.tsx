@@ -1,11 +1,10 @@
 import React from 'react';
 import AliasProps from './alias.props';
 
-const Alias = (props: AliasProps) => {
-  const { alias } = props;
+const Alias = ({ id, alias }: AliasProps) => {
   return (
     <div>
-      <span>{alias}</span>
+      <span>{alias} ({id})</span>
     </div>
   );
 };

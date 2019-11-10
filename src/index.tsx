@@ -6,8 +6,12 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import store from './app/reducers/store';
-import { fetchAliases } from './app/reducers/aliases.reducer';
+//import { fetchAliases } from './app/reducers/aliases.reducer';
 import requestCredentials from './app/services/ovh-credentials.service';
+
+import {fetchAliases} from './app/services/redirections.service';
+import AliasData from './app/services/@data-types/alias-data';
+import { populateAliases } from './app/reducers/aliases.reducer';
 
 const render = () => {
     const App = require('./app/components/app/app').default
@@ -23,8 +27,10 @@ const render = () => {
 
 render();
 
-// Fetch alias list
-store.dispatch(fetchAliases());
+// DBG Fetch alias list
+fetchAliases().then((fetchedAliases: Array<AliasData>) => {
+    store.dispatch(populateAliases(fetchedAliases));
+});
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept('./app/components/app/app', render)

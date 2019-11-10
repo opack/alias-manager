@@ -14,16 +14,15 @@ const Home = () => {
 
     const dispatch = useDispatch();
     const handleUpdateFilter = (term: string) => dispatch(updateFilter(term));
-    const handleAddAlias = (alias: string) => dispatch(addAlias(new AliasData('', alias)));
+    const handleAddAlias = (from: string) => dispatch(addAlias(new AliasData('', from, '')));
 
-    const getVisibleAliases = (aliases: AliasData[], filter: string): string[] => {
+    const getVisibleAliases = (aliases: AliasData[], filter: string): AliasData[] => {
         // If there is a filter, then we filter the list of data to only keep the ones matching the filter
         if (filter.trim() !== '') {
-            aliases = aliases.filter((data: AliasData) => data.alias.includes(filter));
+            aliases = aliases.filter((data: AliasData) => data.from.includes(filter));
         }
 
-        // Now return a string array containing only the redirections to display
-        return aliases.map((data: AliasData) => data.alias);
+        return aliases;
     };
 
     return (

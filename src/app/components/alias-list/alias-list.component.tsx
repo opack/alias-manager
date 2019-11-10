@@ -2,15 +2,15 @@ import React from 'react';
 import AliasListProps from './alias-list.props';
 import Alias from '../alias/alias.component';
 import AliasListDefaultProps from './alias-list.default-props';
+import AliasData from '../../services/@data-types/alias-data';
 
-const AliasList = (props: AliasListProps) => {
-  const { aliases } = props;
+const AliasList = ({ aliases }: AliasListProps) => {
   return (
     <div>
         <ul>
         {
-          aliases.map( (alias: string) => {
-            return (<li key={alias}><Alias alias={alias} /></li>);
+          aliases.map( (alias: AliasData) => {
+            return (<li key={alias.id}><Alias id={alias.id} alias={alias.from} /></li>);
           })
         }
         </ul>

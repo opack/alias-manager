@@ -1,13 +1,11 @@
-import { configureStore, getDefaultMiddleware } from 'redux-starter-kit'
+import { configureStore } from 'redux-starter-kit'
 
 import rootReducer from './rootReducer'
 import { AliasStore } from './aliases.reducer';
-import aliasDataService from '../services/redirections-data.service';
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: true,
-  middleware: [aliasDataService, ...getDefaultMiddleware()],
+  devTools: true
 })
 
 if (process.env.NODE_ENV === 'development' && module.hot) {

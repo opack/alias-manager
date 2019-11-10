@@ -5,17 +5,17 @@ import AliasData from "../services/@data-types/alias-data";
  * Define how the alias store is shaped
  */
 export interface AliasStore {
-    aliases: AliasData[],
+    aliases: any[],
     filter: string
 }
 
 const initialState: AliasStore = {
     aliases: [
-        new AliasData('0', 'fnac@valdera.fr'),
-        new AliasData('1', 'darty@valdera.fr'),
-        new AliasData('2', 'boulanger@valdera.fr'),
-        new AliasData('3', 'amazon@valdera.fr'),
-        new AliasData('4', 'denver@dernier-dinosaure.com')
+        {id:'0', from:'fnac@valdera.fr', to: 'marekh.ebony@gmail.com'},
+        {id:'1', from:'darty@valdera.fr', to: 'marekh.ebony@gmail.com'},
+        {id:'2', from:'boulanger@valdera.fr', to: 'marekh.ebony@gmail.com'},
+        {id:'3', from:'amazon@valdera.fr', to: 'marekh.ebony@gmail.com'},
+        {id:'4', from:'denver@dernier-dinosaure.com', to: 'marekh.ebony@gmail.com'}
     ],
     filter: ''
 }
@@ -28,13 +28,13 @@ const aliasesSlice = createSlice({
             // Nothing to do. The fetch will be performed in data.service.ts
             console.log('DBG in fetchAliases');
         },
-        populateAliases(state: AliasStore, action: PayloadAction<AliasData[]>) {
+        populateAliases(state: AliasStore, action: PayloadAction<Array<AliasData>>) {
             // Clear current alias list
             state.aliases = [];
 
             // Add fetched aliases
             const data = action.payload;
-            data.forEach((alias: AliasData) => state.aliases.push(alias));
+            data.forEach((alias:any) => state.aliases.push(alias));
         },
         addAlias(state: AliasStore, action: PayloadAction<AliasData>) {
             state.aliases.push(action.payload);

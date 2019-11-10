@@ -1,4 +1,5 @@
 interface AliasProps {
+    id: string;
     // The e-mail redirection
     alias: string;
 }
