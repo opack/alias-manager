@@ -6,6 +6,7 @@ import Filter from '../../components/filter/filter.component';
 import AliasList from '../../components/alias-list/alias-list.component';
 import AliasCreator from '../../components/alias-creator/alias-creator.component';
 import AliasData from '../../services/@data-types/alias-data';
+import { logout } from '../../services/ovh-credentials.service';
 
 const Home = () => {
     const [aliases, setAliases] = useState(new Array<AliasData>());
@@ -35,7 +36,8 @@ const Home = () => {
             <Filter initialFilterTerm={filter} filter={setFilter} />
             <AliasList aliases={getVisibleAliases(aliases, filter)} />
             <AliasCreator onCreateAliasClick={addAlias} />
-            <button onClick={refreshAliases} >Refresh</button>
+            <button onClick={refreshAliases}>Refresh</button>
+            <button onClick={logout}>Logout</button>
         </div>
     );
 };

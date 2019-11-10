@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
-import requestCredentials from './app/services/ovh-credentials.service';
+import { requestCredentials } from './app/services/ovh-credentials.service';
 
 const render = () => {
     const App = require('./app/components/app/app').default
