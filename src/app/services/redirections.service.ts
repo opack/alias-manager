@@ -15,13 +15,25 @@ const fetchRedirections = (): Promise<Array<AliasData>> => {
     })
 };
 
-const createRedirection = (from: string, to: string): Promise<Array<AliasData>> => {
+/**
+ * 
+ * @param from 
+ * @param to 
+ * @returns The promise resolves to an array of strings that are the IDs of the created redirections
+ */
+const createRedirection = (from: string, to: string): Promise<Array<string>> => {
     return ovh.requestPromised('POST', '/email/domain/valdera.fr/redirection',
     {
-        domain: 'valdera.fr',
         from,
-        to
+        to,
+        localCopy: false
     })
+    .then((result: any) => {
+        return ovh.requestPromised('GET', `/email/domain/valdera.fr/redirection`,
+        {
+            from
+        });
+    });
 };
 
 export { fetchRedirections, createRedirection };

@@ -31,9 +31,7 @@ class Filter extends Component<FilterProps, FilterState> {
     const { term } = this.state;
     return (
       <div>
-        <fieldset>
-          <input type="text" value={term} onChange={this.startFiltering} />
-        </fieldset>
+          Filter: <input type="text" value={term} onChange={this.startFiltering} />
       </div>
     );
   }

@@ -16,7 +16,10 @@ const Home = () => {
     const dispatch = useDispatch();
     const handleUpdateFilter = (term: string) => dispatch(updateFilter(term));
     const handleAddAlias = (from: string, to: string) => {
-        createRedirection(from, to).then((result: any) => dispatch(addAlias(new AliasData(result.properties.id, from, to))));
+        createRedirection(from, to).then((createdIds: Array<string>) => {
+            dispatch(addAlias(new AliasData(createdIds[0], from, to)));
+        })
+        .catch((reason: any) => console.log(reason));
     };
 
     const getVisibleAliases = (aliases: AliasData[], filter: string): AliasData[] => {
@@ -38,10 +41,9 @@ const Home = () => {
 
     return (
         <div>
+            <AliasCreator onCreateAliasClick={handleAddAlias} /><button onClick={refreshAliases}>Refresh</button>
             <Filter initialFilterTerm={filter} filter={handleUpdateFilter} />
             <AliasList aliases={getVisibleAliases(aliases, filter)} />
-            <AliasCreator onCreateAliasClick={handleAddAlias} />
-            <button onClick={refreshAliases}>Refresh</button>
         </div>
     );
 };

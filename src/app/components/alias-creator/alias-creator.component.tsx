@@ -20,19 +20,18 @@ class AliasCreator extends Component<AliasCreatorProps, AliasCreatorState> {
   createAlias = () => {
     const node = this.input.current;
     if (node) {
-      this.props.onCreateAliasClick(node.value, 'marekh.ebony@gmail.com');
+      this.props.onCreateAliasClick(`${node.value}@valdera.fr`, 'marekh.ebony@gmail.com');
     }
   }
   
   render() {
     const { alias } = this.state;
+    const { domain } = this.props;
 
     return (
       <div>
-        <fieldset>
-          <input ref={this.input} type="text" defaultValue={alias} />
-          <button onClick={this.createAlias} >Create</button>
-        </fieldset>
+          <input ref={this.input} type="text" defaultValue={alias} /><span>@{domain}</span>
+          <button onClick={this.createAlias}>Create</button>
       </div>
     );
   }
