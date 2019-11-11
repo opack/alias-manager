@@ -3,7 +3,7 @@ import AliasData from './@data-types/alias-data';
 
 const ovh = require('ovh')(credentials);
 
-const fetchAliases = (): Promise<Array<AliasData>> => {
+const fetchRedirections = (): Promise<Array<AliasData>> => {
     return ovh.requestPromised('GET', '/email/domain/valdera.fr/redirection')
     .then((redirectionIds: Array<string>) => {
         const aliasPromises: Array<Promise<AliasData>> = [];
@@ -15,4 +15,13 @@ const fetchAliases = (): Promise<Array<AliasData>> => {
     })
 };
 
-export {fetchAliases};
+const createRedirection = (from: string, to: string): Promise<Array<AliasData>> => {
+    return ovh.requestPromised('POST', '/email/domain/valdera.fr/redirection',
+    {
+        domain: 'valdera.fr',
+        from,
+        to
+    })
+};
+
+export { fetchRedirections, createRedirection };
