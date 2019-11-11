@@ -14,8 +14,7 @@ const AliasList = ({ aliases, onRemoveAliasClick }: AliasListProps) => {
               const id = alias.id;
               return (
                 <tr key={id}>
-                  <td><Alias {...alias} /></td>
-                  <td><button onClick={() => onRemoveAliasClick(id)}>X</button></td>
+                  <Alias {...alias} onRemoveAliasClick={onRemoveAliasClick}/>
                 </tr>
               );
             })
