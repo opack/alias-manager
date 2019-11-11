@@ -4,16 +4,24 @@ import Alias from '../alias/alias.component';
 import AliasListDefaultProps from './alias-list.default-props';
 import AliasData from '../../services/@data-types/alias-data';
 
-const AliasList = ({ aliases }: AliasListProps) => {
+const AliasList = ({ aliases, onRemoveAliasClick }: AliasListProps) => {
   return (
     <div>
-        <ul>
-        {
-          aliases.map( (alias: AliasData) => {
-            return (<li key={alias.id}><Alias {...alias} /></li>);
-          })
-        }
-        </ul>
+        <table>
+          <tbody>
+          {
+            aliases.map( (alias: AliasData) => {
+              const id = alias.id;
+              return (
+                <tr key={id}>
+                  <td><Alias {...alias} /></td>
+                  <td><button onClick={() => onRemoveAliasClick(id)}>X</button></td>
+                </tr>
+              );
+            })
+          }
+          </tbody>
+        </table>
     </div>
   );
 };

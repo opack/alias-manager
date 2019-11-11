@@ -29,11 +29,15 @@ const createRedirection = (from: string, to: string): Promise<Array<string>> => 
         localCopy: false
     })
     .then((result: any) => {
-        return ovh.requestPromised('GET', `/email/domain/valdera.fr/redirection`,
+        return ovh.requestPromised('GET', '/email/domain/valdera.fr/redirection',
         {
             from
         });
     });
 };
 
-export { fetchRedirections, createRedirection };
+const deleteRedirection = (id: string): Promise<Array<any>> => {
+    return ovh.requestPromised('DELETE', `/email/domain/valdera.fr/redirection/${id}`);
+};
+
+export { fetchRedirections, createRedirection, deleteRedirection };

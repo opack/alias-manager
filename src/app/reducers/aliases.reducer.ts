@@ -30,7 +30,8 @@ const aliasesSlice = createSlice({
             state.aliases.push(action.payload);
         },
         removeAlias(state: AliasStore, action: PayloadAction<string>) {
-            state.aliases = state.aliases.filter(alias => alias.id !== action.payload);
+            const toRemove = action.payload;
+            state.aliases = state.aliases.filter(alias => alias.id !== toRemove);
         },
         updateFilter(state: AliasStore, action: PayloadAction<string>) {
             state.filter = action.payload;
