@@ -1,7 +1,11 @@
 interface AliasProps {
     id: string;
-    // The e-mail redirection
-    alias: string;
+    
+    // The alias receiving the mails
+    from: string;
+
+    // The e-mail all mails are sent to
+    to: string;
 }
 
 export default AliasProps;

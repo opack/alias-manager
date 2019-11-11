@@ -2,12 +2,13 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
 import { GlobalStore } from '../../reducers/store';
-import { addAlias, updateFilter } from '../../reducers/aliases.reducer';
+import { addAlias, updateFilter, populateAliases } from '../../reducers/aliases.reducer';
 
-import Filter from "../../components/filter/filter.component";
-import AliasList from "../../components/alias-list/alias-list.component";
-import AliasCreator from "../../components/alias-creator/alias-creator.component";
+import Filter from '../../components/filter/filter.component';
+import AliasList from '../../components/alias-list/alias-list.component';
+import AliasCreator from '../../components/alias-creator/alias-creator.component';
 import AliasData from '../../services/@data-types/alias-data';
+import { fetchAliases } from '../../services/redirections.service';
 
 const Home = () => {
     const { filter, aliases } = useSelector((state: GlobalStore) => state.aliases);
@@ -25,11 +26,20 @@ const Home = () => {
         return aliases;
     };
 
+    const refreshAliases = () => {    
+        fetchAliases().then((fetchedAliases: Array<AliasData>) => {
+            dispatch(populateAliases(fetchedAliases));
+        });
+    }
+
+    //useEffect(() => refreshAliases(), []);
+
     return (
         <div>
             <Filter initialFilterTerm={filter} filter={handleUpdateFilter} />
             <AliasList aliases={getVisibleAliases(aliases, filter)} />
             <AliasCreator onCreateAliasClick={handleAddAlias} />
+            <button onClick={refreshAliases}>Refresh</button>
         </div>
     );
 };

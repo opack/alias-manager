@@ -10,7 +10,7 @@ const AliasList = ({ aliases }: AliasListProps) => {
         <ul>
         {
           aliases.map( (alias: AliasData) => {
-            return (<li key={alias.id}><Alias id={alias.id} alias={alias.from} /></li>);
+            return (<li key={alias.id}><Alias {...alias} /></li>);
           })
         }
         </ul>
