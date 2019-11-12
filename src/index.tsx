@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import store from './app/reducers/store';
+import requestCredentials from './app/services/ovh-credentials.service';
 
 const render = () => {
     const App = require('./app/components/app/app').default
@@ -13,6 +14,7 @@ const render = () => {
     ReactDOM.render(
         <Provider store={store}>
             <App />
+            <button onClick={requestCredentials}>Request credentials</button>
         </Provider>,
         document.getElementById('root')
     )

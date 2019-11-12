@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import AliasProps from './alias.props';
 
-const Alias = (props: AliasProps) => {
-  const { alias } = props;
+const Alias = ({ id, from, to, onRemoveAliasClick }: AliasProps) => {
   return (
-    <div>
-      <span>{alias}</span>
-    </div>
+    <Fragment>
+      <td><span>{from} -> {to}</span></td>
+      <td><button onClick={() => onRemoveAliasClick(id)}>X</button></td>
+    </Fragment>
   );
 };
 
