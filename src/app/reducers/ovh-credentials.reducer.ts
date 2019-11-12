@@ -1,31 +1,29 @@
 import { PayloadAction, createSlice } from "redux-starter-kit";
+import OvhCredentialsData from "../services/@data-types/ovh-credentials-data";
 
 /**
  * Define how the alias store is shaped
  */
 export interface OVHCredentialsStore {
-    endpoint: string,
-    appKey: string,
-    appSecret: string,
-    consumerKey: string
+    credentials: OvhCredentialsData,
+    fetchDate: string
 }
 
 const initialState: OVHCredentialsStore = {
-    endpoint: 'ovh-eu',
-    appKey: '1EslNdW2fvBLdLg5',
-    appSecret: 'kGISrWhJFj32mSUgnMnlsRGZVes1EXmB',
-    consumerKey: ''
-}
+    fetchDate: '',
+    credentials: new OvhCredentialsData ('ovh-eu', '1EslNdW2fvBLdLg5', 'kGISrWhJFj32mSUgnMnlsRGZVes1EXmB', '')
+};
 
 const ovhCredentialsSlice = createSlice({
     name: 'ovhCredentials',
     initialState,
     reducers: {
         setConsumerKey(state: OVHCredentialsStore, action: PayloadAction<string>) {
-            state.consumerKey = action.payload;
+            const consumerKey = action.payload;
+            state.credentials = {...state.credentials, consumerKey};
         }
     }
-})
+});
 
 // Extract the action creators object and the reducer
 const { actions, reducer } = ovhCredentialsSlice;

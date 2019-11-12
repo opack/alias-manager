@@ -8,7 +8,7 @@ import Filter from '../../components/filter/filter.component';
 import AliasList from '../../components/alias-list/alias-list.component';
 import AliasCreator from '../../components/alias-creator/alias-creator.component';
 import AliasData from '../../services/@data-types/alias-data';
-import { fetchRedirections, createRedirection, deleteRedirection } from '../../services/redirections.service';
+import { createRedirection, deleteRedirection, fetchRedirections } from '../../services/redirections.service';
 
 const Home = () => {
     const { filter, aliases } = useSelector((state: GlobalStore) => state.aliases);

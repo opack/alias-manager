@@ -1,19 +1,22 @@
-import credentials from './app-keys';
-const ovh = require('ovh')(credentials);
+import OvhApiClientService from './ovh-api-client.service';
 
-const requestCredentials = () => {
-    ovh.request('POST', '/auth/credential',
+export interface OvhCredentialsRequestData {
+    consumerKey: string;
+    validationUrl: string;
+    state: string;
+}
+
+const requestCredentials = (): Promise<OvhCredentialsRequestData> => {
+    return OvhApiClientService.request('POST', '/auth/credential',
     {
         'accessRules': [
             { 'method': 'GET', 'path': '/email/domain/*' },
             { 'method': 'POST', 'path': '/email/domain/*' },
             { 'method': 'PUT', 'path': '/email/domain/*' },
             { 'method': 'DELETE', 'path': '/email/domain/*' }
-        ]
-    },
-    (error: any, credential: any) => {
-        console.log(error || credential);
+        ],
+        'redirection': 'http://localhost:3000'
     });
 };
 
-export default requestCredentials;
+export { requestCredentials };
