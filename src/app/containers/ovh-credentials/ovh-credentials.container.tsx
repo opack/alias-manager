@@ -5,7 +5,7 @@ import { requestCredentials, OvhCredentialsRequestData } from '../../services/ov
 import { setConsumerKey } from '../../reducers/ovh-credentials.reducer';
 
 const OvhCredentials = () => {
-    const [ validationUrl, setValidationUrl ] = useState('');
+    const [ validationUrl, setValidationUrl ] = useState<string>('');
     const dispatch = useDispatch();
 
     const onRequestCredentials = () => {    

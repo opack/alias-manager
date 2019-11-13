@@ -4,7 +4,7 @@ import AliasCreatorProps from './alias-creator.props';
 import aliasCreatorDefaultProps from './alias-creator.default-props';
 
 const AliasCreator = ({ domain, onCreateAliasClick }: AliasCreatorProps) => {
-  const [alias, setAlias] = useState('');
+  const [alias, setAlias] = useState<string>('');
   const updateAlias = (event: any) => setAlias(event.target.value);
   const createAlias = () => onCreateAliasClick(`${alias}@valdera.fr`, 'marekh.ebony@gmail.com');
 
