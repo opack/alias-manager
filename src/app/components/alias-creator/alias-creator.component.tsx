@@ -9,11 +9,20 @@ const AliasCreator = ({ domain, onCreateAliasClick }: AliasCreatorProps) => {
   const createAlias = () => onCreateAliasClick(`${alias}@valdera.fr`, 'marekh.ebony@gmail.com');
 
   return (
-      <div>
-          <input type="text" value={alias} onChange={updateAlias}/><span>@{domain}</span>
-          <button onClick={createAlias}>Create</button>
+    <div>
+      <label className="label">Create new alias</label>
+      <div className="field has-addons">
+        <div className="control">
+          <input className="input has-addons" type="text" value={alias} onChange={updateAlias} placeholder="some-alias"/>
+        </div>
+        <div className="control">
+          <button className="button" disabled><span>@{domain}</span></button>
+        </div>
+        <button className="button is-primary" onClick={createAlias}>Create</button>
       </div>
-    );
+      
+    </div>
+  );
 };
 
 AliasCreator.defaultProps = aliasCreatorDefaultProps;

@@ -4,23 +4,24 @@ import Alias from '../alias/alias.component';
 import AliasListDefaultProps from './alias-list.default-props';
 import AliasData from '../../services/@data-types/alias-data';
 
-const AliasList = ({ aliases, onRemoveAliasClick }: AliasListProps) => {
+const AliasList = ({ aliases, onRemoveAliasClick, onRefreshList, filterComponent }: AliasListProps) => {
   return (
     <div>
-        <table>
-          <tbody>
+        <label className="subtitle">Alias list <span className="tag">{aliases.length}</span></label>
+        <button className="button" onClick={onRefreshList}>Refresh</button>
+        { filterComponent }
+        <div className="columns is-multiline">
           {
             aliases.map( (alias: AliasData) => {
               const id = alias.id;
               return (
-                <tr key={id}>
+                <div className="column is-one-quarter" key={id}>
                   <Alias {...alias} onRemoveAliasClick={onRemoveAliasClick}/>
-                </tr>
+                </div>
               );
             })
           }
-          </tbody>
-        </table>
+        </div>
     </div>
   );
 };

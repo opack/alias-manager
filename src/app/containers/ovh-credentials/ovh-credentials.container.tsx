@@ -25,6 +25,8 @@ const OvhCredentials = () => {
 
     return (
         <Fragment>
+            <h1 className="title">OVH Credentials</h1>
+            <h2 className="subtitle">Use this page to generate a new consumerKey</h2>
             {validationLink}
             <button onClick={onRequestCredentials}>Request new credentials</button>
         </Fragment>
