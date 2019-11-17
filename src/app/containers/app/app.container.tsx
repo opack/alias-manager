@@ -35,21 +35,11 @@ const App: React.FC = () => {
                 <SimpleRouterLink to="/ovh-credentials" label="OVH Credentials" />
 
                 <hr />
-                
+
                 <Switch>
-
-                    <Route path="/aliases">
-                        <Home />
-                    </Route>
-
-                    <Route path="/ovh-credentials">
-                        <OvhCredentials />
-                    </Route>
-
-                    <Route path="/">
-                        <Home />
-                    </Route>
-
+                    <Route path="/aliases" component={Home} />
+                    <Route path="/ovh-credentials" component={OvhCredentials} />
+                    <Route path="/" component={Home} />
                 </Switch>
             </Router>
         </Fragment>
