@@ -1,3 +1,4 @@
+import { OVHCredentialsStore } from './ovh-credentials.reducer';
 import { configureStore } from 'redux-starter-kit'
 
 import rootReducer from './rootReducer'
@@ -20,5 +21,6 @@ export type AppDispatch = typeof store.dispatch;
 export default store;
 
 export interface GlobalStore {
-  aliases: AliasStore
+  aliases: AliasStore,
+  ovhCredentials: OVHCredentialsStore
 }

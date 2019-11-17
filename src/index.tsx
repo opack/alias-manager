@@ -6,15 +6,12 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import store from './app/reducers/store';
-import requestCredentials from './app/services/ovh-credentials.service';
+import App from './app/containers/app/app.container';
 
 const render = () => {
-    const App = require('./app/components/app/app').default
-
     ReactDOM.render(
         <Provider store={store}>
             <App />
-            <button onClick={requestCredentials}>Request credentials</button>
         </Provider>,
         document.getElementById('root')
     )
@@ -23,7 +20,7 @@ const render = () => {
 render();
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-    module.hot.accept('./app/components/app/app', render)
+    module.hot.accept('./app/containers/app/app.container', render)
 }
 
 // If you want your app to work offline and load faster, you can change
