@@ -12,10 +12,9 @@ const SimpleRouterLink = ({ label, to, activeOnlyWhenExact = false }: SimpleRout
     });
 
     return (
-        <div className={match ? "active" : ""}>
-            {match && "> "}
+        <li className={match ? "is-active" : ""}>
             <Link to={to}>{label}</Link>
-        </div>
+        </li>
     );
 };
 

@@ -12,9 +12,8 @@ const Filter = ({ initialFilterTerm, filter }: FilterProps) => {
 
   return (
     <div className="field">
-      <label className="label">Filter</label>
       <div className="control">
-        <input className="input" type="text" value={term} onChange={updateFilter} placeholder="Type some text to filter aliases" />
+        <input className="input" type="text" value={term} onChange={updateFilter} placeholder="Filter" />
       </div>
     </div>
   );
