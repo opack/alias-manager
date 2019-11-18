@@ -1,7 +1,7 @@
 interface SimpleRouteLinkProps {
     label: string;
     to: string;
-    activeOnlyWhenExact: boolean;
+    activeOnlyWhenExact?: boolean;
 }
 
 export default SimpleRouteLinkProps;

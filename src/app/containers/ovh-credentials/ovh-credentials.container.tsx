@@ -19,12 +19,14 @@ const OvhCredentials = () => {
             // Update the store directly, in case the user opens the link in a new tab
             dispatch(setConsumerKey(consumerKey));
         });
-    }
+    };
 
     const validationLink = validationUrl && <a href={validationUrl}>Click here to validate the received token</a>;
 
     return (
         <Fragment>
+            <h1 className="title">OVH Credentials</h1>
+            <h2 className="subtitle">Use this page to generate a new consumerKey</h2>
             {validationLink}
             <button onClick={onRequestCredentials}>Request new credentials</button>
         </Fragment>

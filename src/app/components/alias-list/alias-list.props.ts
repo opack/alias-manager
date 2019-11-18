@@ -6,6 +6,12 @@ interface AliasListProps {
 
     // Called when the alias removal is asked
     onRemoveAliasClick(id: string): void;
+
+    // Called when the user request a list refresh
+    onRefreshList(): void;
+
+    // The filter component to display
+    filterComponent?: any;
 }
 
 export default AliasListProps;

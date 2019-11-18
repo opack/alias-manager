@@ -6,7 +6,7 @@ const fetchRedirections = (): Promise<Array<AliasData>> => {
     .then((redirectionIds: Array<string>) => {
         const aliasPromises: Array<Promise<AliasData>> = [];
         redirectionIds.forEach(id => {
-            const promise = OvhApiClientService.request('GET', `/email/domain/${OvhApiClientService.domain}/redirection/${id}`)
+            const promise = OvhApiClientService.request('GET', `/email/domain/${OvhApiClientService.domain}/redirection/${id}`);
             aliasPromises.push(promise);
         });
         return Promise.all(aliasPromises);

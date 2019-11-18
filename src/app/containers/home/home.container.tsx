@@ -41,15 +41,19 @@ const Home = () => {
         fetchRedirections().then((fetchedAliases: Array<AliasData>) => {
             dispatch(populateAliases(fetchedAliases));
         });
-    }
+    };
 
     //useEffect(() => refreshAliases(), []);
 
+    const filterComponent = <Filter initialFilterTerm={filter} filter={handleUpdateFilter} />;
     return (
         <div>
-            <AliasCreator onCreateAliasClick={handleAddAlias} /><button onClick={refreshAliases}>Refresh</button>
-            <Filter initialFilterTerm={filter} filter={handleUpdateFilter} />
-            <AliasList aliases={getVisibleAliases(aliases, filter)} onRemoveAliasClick={handleRemoveAlias}/>
+            <h1 className="title">Aliases</h1>
+            <h2 className="subtitle">Manage your redirections</h2>
+            <hr/>
+            <AliasCreator domain="valdera.fr" onCreateAliasClick={handleAddAlias} />
+            <hr/>
+            <AliasList aliases={getVisibleAliases(aliases, filter)} onRemoveAliasClick={handleRemoveAlias} onRefreshList={refreshAliases} filterComponent={filterComponent}/>
         </div>
     );
 };

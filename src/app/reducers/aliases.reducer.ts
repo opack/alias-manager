@@ -12,7 +12,7 @@ export interface AliasStore {
 const initialState: AliasStore = {
     aliases: [],
     filter: ''
-}
+};
 
 const aliasesSlice = createSlice({
     name: 'aliases',
@@ -37,7 +37,7 @@ const aliasesSlice = createSlice({
             state.filter = action.payload;
         }
     }
-})
+});
 
 // Extract the action creators object and the reducer
 const { actions, reducer } = aliasesSlice;
