@@ -1,20 +1,18 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import AliasProps from './alias.props';
 
-const Alias = ({ id, from, to, onRemoveAliasClick }: AliasProps) => {
-  const strippedFrom = from.substring(0, from.indexOf('@'));
+const Alias = ({id, from, to, onRemoveAliasClick}: AliasProps) => {
+    const strippedFrom = from.substring(0, from.indexOf('@'));
 
-  return (
-    <article className="message is-info">
-      <div className="message-header">
-        {strippedFrom}
-        <button className="delete" onClick={() => onRemoveAliasClick(id)}></button>
-      </div>
-      <div className="message-body">
-      To: {to}
-      </div>
-    </article>
-  );
+    return (
+        <Fragment>
+            <td><strong><span className="has-text-primary">{strippedFrom}</span></strong></td>
+            <td>{to}</td>
+            <td align="center">
+                <button className="delete" onClick={() => onRemoveAliasClick(id)}></button>
+            </td>
+        </Fragment>
+    );
 };
 
 export default Alias;

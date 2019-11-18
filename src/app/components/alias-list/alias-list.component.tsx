@@ -10,18 +10,24 @@ const AliasList = ({ aliases, onRemoveAliasClick, onRefreshList, filterComponent
         <label className="subtitle">Alias list <span className="tag">{aliases.length}</span></label>
         <button className="button" onClick={onRefreshList}>Refresh</button>
         { filterComponent }
-        <div className="columns is-multiline">
-          {
-            aliases.map( (alias: AliasData) => {
-              const id = alias.id;
-              return (
-                <div className="column is-one-quarter" key={id}>
-                  <Alias {...alias} onRemoveAliasClick={onRemoveAliasClick}/>
-                </div>
-              );
-            })
-          }
-        </div>
+        <table className="table is-striped">
+            <thead>
+                <th>From</th>
+                <th>To</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+              {
+                aliases.map( (alias: AliasData) => {
+                  return (
+                    <tr key={alias.id}>
+                      <Alias {...alias} onRemoveAliasClick={onRemoveAliasClick}/>
+                    </tr>
+                  );
+                })
+              }
+            </tbody>
+        </table>
     </div>
   );
 };
