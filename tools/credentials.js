@@ -11,4 +11,4 @@ ovh.request('POST', '/auth/credential', {
     ]
 }, function (error, credential) {
     console.log(error || credential);
-});
+}, {});

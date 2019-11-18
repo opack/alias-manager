@@ -19,7 +19,7 @@ const OvhCredentials = () => {
             // Update the store directly, in case the user opens the link in a new tab
             dispatch(setConsumerKey(consumerKey));
         });
-    }
+    };
 
     const validationLink = validationUrl && <a href={validationUrl}>Click here to validate the received token</a>;
 

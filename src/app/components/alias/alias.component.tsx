@@ -9,7 +9,7 @@ const Alias = ({id, from, to, onRemoveAliasClick}: AliasProps) => {
             <td><strong><span className="has-text-primary">{strippedFrom}</span></strong></td>
             <td>{to}</td>
             <td align="center">
-                <button className="delete" onClick={() => onRemoveAliasClick(id)}></button>
+                <button className="delete" onClick={() => onRemoveAliasClick(id)} />
             </td>
         </Fragment>
     );

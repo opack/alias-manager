@@ -8,7 +8,7 @@ const Filter = ({ initialFilterTerm, filter }: FilterProps) => {
     const newTerm = event.target.value;
     setTerm(newTerm);
     filter(newTerm);
-  }
+  };
 
   return (
     <div className="field">

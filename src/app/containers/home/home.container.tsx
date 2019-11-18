@@ -41,7 +41,7 @@ const Home = () => {
         fetchRedirections().then((fetchedAliases: Array<AliasData>) => {
             dispatch(populateAliases(fetchedAliases));
         });
-    }
+    };
 
     //useEffect(() => refreshAliases(), []);
 
@@ -51,7 +51,7 @@ const Home = () => {
             <h1 className="title">Aliases</h1>
             <h2 className="subtitle">Manage your redirections</h2>
             <hr/>
-            <AliasCreator onCreateAliasClick={handleAddAlias} />
+            <AliasCreator domain="valdera.fr" onCreateAliasClick={handleAddAlias} />
             <hr/>
             <AliasList aliases={getVisibleAliases(aliases, filter)} onRemoveAliasClick={handleRemoveAlias} onRefreshList={refreshAliases} filterComponent={filterComponent}/>
         </div>
